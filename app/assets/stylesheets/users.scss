@@ -2,11 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background-color: #cceadc;
+  margin: 0;
+}
 .header {
   width: 100%;
-  height: 200px;
-  color: green;
-  background-color: black;
+  height: 150px;
+  color: #555e5a;
+  font-variant: small-caps;
   text-align: center;
   padding: 10px;
+  background-image: linear-gradient(#83efb6, #65bc8f);
 }
