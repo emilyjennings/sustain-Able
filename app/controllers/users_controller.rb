@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
   def index
   end
@@ -19,6 +20,13 @@ class UsersController < ApplicationController
       redirect_to signup_path
       # flash[:notice] = @parent.errors.full_messages.to_sentence
     end
+  end
+
+  def update
+
+    @user = User.find(params[:id])
+    @user.update(bio: params[:user][:bio])
+    redirect_to user_path(current_user)
   end
 
   private

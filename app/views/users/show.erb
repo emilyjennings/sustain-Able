@@ -1,2 +1,47 @@
-Welcome, <%=@user.username%>!
-Your Dashboard
+<h1>Welcome, <%=@user.username.capitalize%>!</h1>
+<h3>Your Dashboard</h3>
+<%= @user.bio%>
+
+<%= form_for @user do |f| %>
+
+
+  <h1>Your User Bio:</h1>
+    <br>
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+    <br>
+    <br>
+
+  <%=f.submit 'Submit'%>
+<%end%>
+
+
+
+<div id="bioResult">
+  <h3 id="bio"></h3>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      var posting = $.post('/users', values);
+
+      posting.done(function(data) {
+        $('#bio').val("");
+        // $(".Submit").prop('disabled', false);
+        var user = data
+        debugger
+        $("#bio").text(user["bio"]);
+      });
+        alert("bio created!")
+
+    });
+    return false;
+  });
+
+</script>
